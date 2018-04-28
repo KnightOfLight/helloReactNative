@@ -1,23 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, TextInput, Button, View, Alert  } from 'react-native';
 
 export default class App extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+    	firstNumber: '',
+    	secondNumber: ''
+    };
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+    	<View style={{padding: 20}}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Первое число"
+          onChangeText={(firstNumber) => this.setState({firstNumber})}
+        />
+         <TextInput
+          style={{height: 40}}
+          placeholder="Второе число"
+          onChangeText={(secondNumber) => this.setState({secondNumber})}
+        />
+      	<Button
+  			onPress={() => {
+  			 	if (this.state.firstNumber == '' || this.state.secondNumber == '') {
+  			 		Alert.alert('Заполните пожалуйста все поля!');
+  			 	} else {
+
+  			 	}
+    			
+  			}}
+  			title="Суммировать"
+		/>
+		</View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
